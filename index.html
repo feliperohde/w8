@@ -2,14 +2,20 @@
 <head>
 	<title>W8 - fx like windows 8</title>
 	<link rel="stylesheet" href="css/anim.css">
-	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="js/w8.js"></script>
+
+   <script>
+   $(function(){
+      $('.w8').w8();
+   });
+   </script>
 
    <style type="text/css" media="screen">
       .w8{height: 90%; width: 90%; margin:auto;  border: solid 10px #444;}
 
       .w8.center-bottom{
-         -webkit-transform-origin: 50% 0;
+         -webkit-transform-origin: 50% 0 ;
          -webkit-animation: bottomCenter 300ms ease both;
       }
 
