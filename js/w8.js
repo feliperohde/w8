@@ -60,8 +60,8 @@
 						}
 
 					//para vericiar se a area de centro esta correta
-					$this.append('<div id="center"></div>');
-					$("#center").html('teste').css({position:'absolute', width:sizes_center.width, height: sizes_center.height, left:tolerances.left, top:tolerances.top, border:'solid 1px red'});
+					//$this.append('<div id="center"></div>');
+					//$("#center").html('teste').css({position:'absolute', width:sizes_center.width, height: sizes_center.height, left:tolerances.left, top:tolerances.top, border:'solid 1px red'});
 
 					$this.wrap('<div class="'+defaults.className+ ' '+ axis.x+'-'+axis.y+'" >').removeAttr('style');
 				});
