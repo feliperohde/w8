@@ -1,5 +1,6 @@
 $(function(){
-	var elem = $('.box-fx');
+	var elem = $('.w8'),
+		 className = 'w8-fx-container';
 
 	elem.each(function(e){
 		var $this = $(this),
@@ -15,7 +16,11 @@ $(function(){
 			perspective = 150,
 			rotate = 1;
 
-			$this.on('mousedown', function(e){
+			$this.on('click', function(e){
+
+				//$this.after().append('<div class="'+className+'">');
+				//$this.after().append('</div>');
+
 				event_pos = {left:(e.offsetX), top:(e.offsetY)},
 				event_pos_reverse = {left:(w-e.offsetX), top:(h-e.offsetY)},
 				hub = {x: w/2, y: h/2},
@@ -29,8 +34,8 @@ $(function(){
 				// 	y: (event_pos.top < hub.y) ? 'top' : 'bottom'
 				// },
 
-				//$this.append('<div id="center"></div>');
-				//$("#center").html('teste').css({position:'absolute', width:sizes_center.width, height: sizes_center.height, left:tolerances.left, top:tolerances.top, border:'solid 1px red'});
+				$this.append('<div id="center"></div>');
+				$("#center").html('teste').css({position:'absolute', width:sizes_center.width, height: sizes_center.height, left:tolerances.left, top:tolerances.top, border:'solid 1px red'});
 
 				// console.log('////////////////////////////////////');
 				// console.log('Rleft tap:' + event_pos_reverse.left);
@@ -41,7 +46,7 @@ $(function(){
 				// console.log('////////////////////////////////////');
 				// console.log('width:' + w);
 				// console.log('hei:' + h);
-				 console.log('////////////////////////////////////');
+				console.log('////////////////////////////////////');
 				console.log('axis_x:' + axis.x);
 				console.log('axis_y:' + axis.y);
 
