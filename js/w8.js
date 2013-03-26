@@ -49,22 +49,20 @@
 
 				// on click
 				$this.on(this.options.events.down, this.options, function(e){
-					var $this = $(this),
-					    contents = $this.contents();
-					event_pos = {left:(e.offsetX), top:(e.offsetY)},
-					event_pos_reverse = {left:(w-e.offsetX), top:(h-e.offsetY)},
-					hub = {x: w/2, y: h/2},
-					axis = {
-						x: (event_pos.left <= tolerances.left) ? 'left' : ((event_pos.left >= (tolerances.left + sizes_center.width)) ? 'right' : 'center'),
-						y: (event_pos.top <= tolerances.top) ? 'top' : ((event_pos.top >=  (tolerances.top + sizes_center.height)) ? 'bottom' : 'center'),
-					},
+					var
+						event_pos = {left:(e.offsetX), top:(e.offsetY)},
+						event_pos_reverse = {left:(w-e.offsetX), top:(h-e.offsetY)},
+						hub = {x: w/2, y: h/2},
+						axis = {
+							x: (event_pos.left <= tolerances.left) ? 'left' : ((event_pos.left >= (tolerances.left + sizes_center.width)) ? 'right' : 'center'),
+							y: (event_pos.top <= tolerances.top) ? 'top' : ((event_pos.top >=  (tolerances.top + sizes_center.height)) ? 'bottom' : 'center'),
+						}
 
 					//para vericiar se a area de centro esta correta
 					//$this.append('<div id="center"></div>');
 					//$("#center").html('teste').css({position:'absolute', width:sizes_center.width, height: sizes_center.height, left:tolerances.left, top:tolerances.top, border:'solid 1px red'});
 
-					$this.wrap('<div class="'+defaults.className+ ' '+ axis.x+'-'+axis.y+'" >');
-					//$(defaults.className).addClass()
+					$this.wrap('<div class="'+defaults.className+ ' '+ axis.x+'-'+axis.y+'" >').removeAttr('style');
 				});
 
 				$this.on(this.options.events.up, function(){
