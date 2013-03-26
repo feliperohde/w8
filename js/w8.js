@@ -29,8 +29,8 @@ $(function(){
 				// 	y: (event_pos.top < hub.y) ? 'top' : 'bottom'
 				// },
 
-				$this.append('<div id="center"></div>');
-				$("#center").html('teste').css({position:'absolute', width:sizes_center.width, height: sizes_center.height, left:tolerances.left, top:tolerances.top, border:'solid 1px red'});
+				//$this.append('<div id="center"></div>');
+				//$("#center").html('teste').css({position:'absolute', width:sizes_center.width, height: sizes_center.height, left:tolerances.left, top:tolerances.top, border:'solid 1px red'});
 
 				// console.log('////////////////////////////////////');
 				// console.log('Rleft tap:' + event_pos_reverse.left);
