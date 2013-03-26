@@ -14,8 +14,9 @@
     // Cria as propriedades padrão
     var pluginName = "w8",
         defaults = {
-            center: 60, // em porcetagem,
-            className: 'w8-fx-container'
+            center: 50, // em porcetagem, indica a area de centro de clique
+            className: 'w8-fx-container',
+            events : {down:'mousedown', up:'mouseup'}
         };
 
     // O verdadeiro construtor do plugin
@@ -37,44 +38,38 @@
     Plugin.prototype = {
 
         init: function() {
-			var $this = $(this.element),
-			pos = $this.position(),
-			h = $this.outerHeight(),
-			w = $this.outerWidth(),
-			fx = $this.find('.this-fx'),
+				var $this = $(this.element),
+				p = $this.position(),
+				position = {top: (p.top + parseInt($this.css('margin-top'),10)), left:  (p.top + parseInt($this.css('margin-left'),10)) }
+				h = $this.outerHeight(),
+				w = $this.outerWidth(),
 
-			sizes_center = {height: (h*this.options.center/100), width: (w*this.options.center/100)},
-			tolerances = {top: ((h/2) - (sizes_center.height/2)), left: ((w/2) - (sizes_center.width/2))},
+				sizes_center = {height: (h*this.options.center/100), width: (w*this.options.center/100)},
+				tolerances = {top: ((h/2) - (sizes_center.height/2) + position.top), left: ((w/2) - (sizes_center.width/2)+ position.left)};
 
-			perspective = 150,
-			rotate = 1;
+				// on click
+				$this.on(this.options.events.down, this.options, function(e){
+					var $this = $(this),
+					    contents = $this.contents();
+					event_pos = {left:(e.offsetX), top:(e.offsetY)},
+					event_pos_reverse = {left:(w-e.offsetX), top:(h-e.offsetY)},
+					hub = {x: w/2, y: h/2},
+					axis = {
+						x: (event_pos.left <= tolerances.left) ? 'left' : ((event_pos.left >= (tolerances.left + sizes_center.width)) ? 'right' : 'center'),
+						y: (event_pos.top <= tolerances.top) ? 'top' : ((event_pos.top >=  (tolerances.top + sizes_center.height)) ? 'bottom' : 'center'),
+					},
 
-			$this.on('click', function(e){
+					//para vericiar se a area de centro esta correta
+					//$this.append('<div id="center"></div>');
+					//$("#center").html('teste').css({position:'absolute', width:sizes_center.width, height: sizes_center.height, left:tolerances.left, top:tolerances.top, border:'solid 1px red'});
 
-			//$this.after().append('<div class="'+className+'">');
-			//$this.after().append('</div>');
+					$this.wrap('<div class="'+defaults.className+ ' '+ axis.x+'-'+axis.y+'" >');
+					//$(defaults.className).addClass()
+				});
 
-			event_pos = {left:(e.offsetX), top:(e.offsetY)},
-			event_pos_reverse = {left:(w-e.offsetX), top:(h-e.offsetY)},
-			hub = {x: w/2, y: h/2},
-			axis = {
-				x: (event_pos.left <= tolerances.left) ? 'left' : ((event_pos.left >= (tolerances.left + sizes_center.width)) ? 'rigth' : 'center'),
-				y: (event_pos.top <= tolerances.top) ? 'top' : ((event_pos.top >=  (tolerances.top + sizes_center.height)) ? 'bottom' : 'center'),
-			},
-
-			$this.append('<div id="center"></div>');
-			$("#center").html('teste').css({position:'absolute', width:sizes_center.width, height: sizes_center.height, left:tolerances.left, top:tolerances.top, border:'solid 1px red'});
-
-			console.log('////////////////////////////////////');
-			console.log('axis_x:' + axis.x);
-			console.log('axis_y:' + axis.y);
-
-			$this.removeClass('left bottom rigth top').addClass(axis.x+'-'+axis.y);
-			});
-        },
-
-        yourOtherFunction: function(el, options) {
-            // alguma lógica
+				$this.on(this.options.events.up, function(){
+					$this.unwrap().removeAttr('style').removeClass('right-top right-center right-bottom left-top left-center left-bottom center-center center-top center-bottom');
+				});
         }
     };
 

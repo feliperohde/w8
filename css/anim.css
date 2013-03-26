@@ -15,3 +15,75 @@
     0% {transform: perspective(400px) rotateX(0deg); }
     100% {transform: perspective(400px) rotateX(-20deg); }
 }
+
+/*///////////////////////////////*/
+/*/////////TOP-CENTER//////////*/
+/*///////////////////////////////*/
+@-webkit-keyframes topCenter{
+    0% {-webkit-transform: perspective(400px) rotateX(0deg); }
+    100% {-webkit-transform: perspective(400px) rotateX(2deg); }
+}
+
+@-moz-keyframes topCenter {
+    0% {-moz-transform: perspective(400px) rotateX(0deg); }
+    100% {-moz-transform: perspective(400px) rotateX(-20deg); }
+}
+
+@keyframes topCenter {
+    0% {transform: perspective(400px) rotateX(0deg); }
+    100% {transform: perspective(400px) rotateX(-20deg); }
+}
+
+/*///////////////////////////////*/
+/*/////////LEFT-CENTER///////////*/
+/*///////////////////////////////*/
+@-webkit-keyframes leftCenter{
+    0% {-webkit-transform: perspective(400px) rotateY(0deg); }
+    100% {-webkit-transform: perspective(400px) rotateY(-2deg); }
+}
+
+@-moz-keyframes leftCenter {
+    0% {-moz-transform: perspective(400px) rotateY(0deg); }
+    100% {-moz-transform: perspective(400px) rotateY(-20deg); }
+}
+
+@keyframes leftCenter {
+    0% {transform: perspective(400px) rotateY(0deg); }
+    100% {transform: perspective(400px) rotateY(-20deg); }
+}
+
+/*///////////////////////////////*/
+/*/////////RIGTH-CENTER///////////*/
+/*///////////////////////////////*/
+@-webkit-keyframes rightCenter{
+    0% {-webkit-transform: perspective(400px) rotateY(0deg); }
+    100% {-webkit-transform: perspective(400px) rotateY(2deg); }
+}
+
+@-moz-keyframes rightCenter {
+    0% {-moz-transform: perspective(400px) rotateY(0deg); }
+    100% {-moz-transform: perspective(400px) rotateY(-20deg); }
+}
+
+@keyframes rightCenter {
+    0% {transform: perspective(400px) rotateY(0deg); }
+    100% {transform: perspective(400px) rotateY(-20deg); }
+}
+
+/*///////////////////////////////*/
+/*/////////CENTER-CENTER///////////*/
+/*///////////////////////////////*/
+@-webkit-keyframes center{
+    0% {-webkit-transform: scale(1); }
+    100% {-webkit-transform: scale(.92) }
+}
+
+@-moz-keyframes center {
+    0% {-moz-transform: scale(1); }
+    100% {-moz-transform: scale(.92) }
+}
+
+@keyframes center {
+    0% {transform: scale(1); }
+    100% {transform: scale(.92) }
+}

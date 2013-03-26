@@ -12,11 +12,37 @@
    </script>
 
    <style type="text/css" media="screen">
-      .w8{height: 90%; width: 90%; margin:auto;  border: solid 10px #444;}
+       body{margin: 10px; padding:0;}
+      .w8{height: 400px; width: 400px; margin-left: 10px; border: solid 2px #444; overflow: hidden; float:left; overflow: hidden;}
 
-      .w8.center-bottom{
+
+      .w8-fx-container .w8{
+         -webkit-transition: -webkit-transform 100ms ease both;
+      }
+      .w8-fx-container.center-bottom .w8, .w8-fx-container.bottom-center .w8{
          -webkit-transform-origin: 50% 0 ;
-         -webkit-animation: bottomCenter 300ms ease both;
+         -webkit-animation: bottomCenter 100ms ease both;
+      }
+
+      .w8-fx-container.center-top .w8, .w8-fx-container.top-center .w8{
+         -webkit-transform-origin: 50% 100% ;
+         -webkit-animation: topCenter 100ms ease both;
+      }
+
+      .w8-fx-container.left-center .w8, .w8-fx-container.center-left .w8{
+
+         -webkit-transform-origin: 100% 50%;
+         -webkit-animation: leftCenter 100ms ease both;
+      }
+
+       .w8-fx-container.right-center .w8, .w8-fx-container.center-right .w8{
+         -webkit-transform-origin: 0 50%;
+         -webkit-animation: rightCenter 100ms ease both;
+      }
+
+       .w8-fx-container.center-center .w8{
+         -webkit-transform-origin: 50%;
+         -webkit-animation: center 100ms ease both;
       }
 
    </style>
@@ -34,5 +60,14 @@
     </p>
 	</div>
 
+      <div class="w8">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+   </div>
 </body>
 </html>
