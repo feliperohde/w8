@@ -16,7 +16,7 @@
         defaults = {
             center: 50, // em porcetagem, indica a area de centro de clique
             className: 'w8-fx-container',
-            events : {down:'mousedown', up:'mouseup'}
+            events : {down:'mousedown', up:'mouseup mouseleave'}
         };
 
     // O verdadeiro construtor do plugin
@@ -39,35 +39,35 @@
 
         init: function() {
 				var
-					$this = $(this.element),
-					p = $this.position(),
-					position = {top: (p.top + parseInt($this.css('margin-top'),10)), left:  (p.top + parseInt($this.css('margin-left'),10)) }
-					h = $this.outerHeight(),
-					w = $this.outerWidth(),
+					elem = $(this.element),
+					p = elem.position(),
+					position = {top: (p.top + parseInt(elem.css('margin-top'),10)), left: (p.top + parseInt(elem.css('margin-left'),10)) }
+					h = elem.outerHeight(),
+					w = elem.outerWidth(),
 
 					sizes_center = {height: (h*this.options.center/100), width: (w*this.options.center/100)},
 					tolerances = {top: ((h/2) - (sizes_center.height/2) + position.top), left: ((w/2) - (sizes_center.width/2)+ position.left)};
 
 				// on click
-				$this.on(this.options.events.down, function(e){
+				elem.on(this.options.events.down, function(e){
 					var
 						event_pos = {left:(e.offsetX), top:(e.offsetY)},
 						event_pos_reverse = {left:(w-e.offsetX), top:(h-e.offsetY)},
 						hub = {x: w/2, y: h/2},
 						axis = {
 							x: (event_pos.left <= tolerances.left) ? 'left' : ((event_pos.left >= (tolerances.left + sizes_center.width)) ? 'right' : 'center'),
-							y: (event_pos.top <= tolerances.top) ? 'top' : ((event_pos.top >=  (tolerances.top + sizes_center.height)) ? 'bottom' : 'center'),
+							y: (event_pos.top <= tolerances.top) ? 'top' : ((event_pos.top >=  (tolerances.top + sizes_center.height)) ? 'bottom' : 'center')
 						}
 
 					//para vericiar se a area de centro esta correta
-					//$this.append('<div id="center"></div>');
+					//elem.append('<div id="center"></div>');
 					//$("#center").html('teste').css({position:'absolute', width:sizes_center.width, height: sizes_center.height, left:tolerances.left, top:tolerances.top, border:'solid 1px red'});
 
-					$this.wrap('<div class="'+defaults.className+ ' '+ axis.x+'-'+axis.y+'" >').removeAttr('style');
+					elem.removeAttr('style').wrap('<div class="'+defaults.className+ ' '+ axis.x+'-'+axis.y+'" >');
 				});
 
-				$this.on(this.options.events.up, function(){
-					$this.unwrap().removeAttr('style').removeClass('right-top right-center right-bottom left-top left-center left-bottom center-center center-top center-bottom');
+				elem.on(this.options.events.up, function(){
+					elem.unwrap().removeAttr('style').removeClass('right-top right-center right-bottom left-top left-center left-bottom center-center center-top center-bottom');
 				});
         }
     };

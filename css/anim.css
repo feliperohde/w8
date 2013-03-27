@@ -3,17 +3,17 @@
 /*///////////////////////////////*/
 @-webkit-keyframes bottomCenter{
     0% {-webkit-transform: perspective(400px) rotateX(0deg); }
-    100% {-webkit-transform: perspective(400px) rotateX(-2deg); }
+    100% {-webkit-transform: perspective(400px) rotateX(-4deg); }
 }
 
 @-moz-keyframes bottomCenter {
     0% {-moz-transform: perspective(400px) rotateX(0deg); }
-    100% {-moz-transform: perspective(400px) rotateX(-20deg); }
+    100% {-moz-transform: perspective(400px) rotateX(-4deg); }
 }
 
 @keyframes bottomCenter {
     0% {transform: perspective(400px) rotateX(0deg); }
-    100% {transform: perspective(400px) rotateX(-20deg); }
+    100% {transform: perspective(400px) rotateX(-4deg); }
 }
 
 /*///////////////////////////////*/
@@ -21,17 +21,17 @@
 /*///////////////////////////////*/
 @-webkit-keyframes topCenter{
     0% {-webkit-transform: perspective(400px) rotateX(0deg); }
-    100% {-webkit-transform: perspective(400px) rotateX(2deg); }
+    100% {-webkit-transform: perspective(400px) rotateX(4deg); }
 }
 
 @-moz-keyframes topCenter {
     0% {-moz-transform: perspective(400px) rotateX(0deg); }
-    100% {-moz-transform: perspective(400px) rotateX(-20deg); }
+    100% {-moz-transform: perspective(400px) rotateX(-4deg); }
 }
 
 @keyframes topCenter {
     0% {transform: perspective(400px) rotateX(0deg); }
-    100% {transform: perspective(400px) rotateX(-20deg); }
+    100% {transform: perspective(400px) rotateX(-4deg); }
 }
 
 /*///////////////////////////////*/
@@ -39,17 +39,17 @@
 /*///////////////////////////////*/
 @-webkit-keyframes leftCenter{
     0% {-webkit-transform: perspective(400px) rotateY(0deg); }
-    100% {-webkit-transform: perspective(400px) rotateY(-2deg); }
+    100% {-webkit-transform: perspective(400px) rotateY(-4deg); }
 }
 
 @-moz-keyframes leftCenter {
     0% {-moz-transform: perspective(400px) rotateY(0deg); }
-    100% {-moz-transform: perspective(400px) rotateY(-20deg); }
+    100% {-moz-transform: perspective(400px) rotateY(-4deg); }
 }
 
 @keyframes leftCenter {
     0% {transform: perspective(400px) rotateY(0deg); }
-    100% {transform: perspective(400px) rotateY(-20deg); }
+    100% {transform: perspective(400px) rotateY(-4deg); }
 }
 
 /*///////////////////////////////*/
@@ -57,17 +57,17 @@
 /*///////////////////////////////*/
 @-webkit-keyframes rightCenter{
     0% {-webkit-transform: perspective(400px) rotateY(0deg); }
-    100% {-webkit-transform: perspective(400px) rotateY(2deg); }
+    100% {-webkit-transform: perspective(400px) rotateY(4deg); }
 }
 
 @-moz-keyframes rightCenter {
     0% {-moz-transform: perspective(400px) rotateY(0deg); }
-    100% {-moz-transform: perspective(400px) rotateY(-20deg); }
+    100% {-moz-transform: perspective(400px) rotateY(-4deg); }
 }
 
 @keyframes rightCenter {
     0% {transform: perspective(400px) rotateY(0deg); }
-    100% {transform: perspective(400px) rotateY(-20deg); }
+    100% {transform: perspective(400px) rotateY(-4deg); }
 }
 
 /*///////////////////////////////*/
