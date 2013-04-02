@@ -16,7 +16,7 @@
         defaults = {
             center: 50, // em porcetagem, indica a area de centro de clique
             className: 'w8-fx-container',
-            events : {down:'mousedown', up:'mouseup mouseleave'}
+            events : {down:'mousedown', up:'mouseup'}
         };
 
     // O verdadeiro construtor do plugin
@@ -40,14 +40,20 @@
         init: function() {
 				var
 					elem = $(this.element),
+					elemClassName = '.' + this.element.className,
+					//wrapper = $('.' + this.options.className),
 					p = elem.position(),
-					position = {top: (p.top + parseInt(elem.css('margin-top'),10)), left: (p.top + parseInt(elem.css('margin-left'),10)) }
+					position = {top: (p.top + parseInt(elem.css('margin-top'),10)), left: (p.left + parseInt(elem.css('margin-left'),10)) }
 					h = elem.outerHeight(),
 					w = elem.outerWidth(),
 
 					sizes_center = {height: (h*this.options.center/100), width: (w*this.options.center/100)},
 					tolerances = {top: ((h/2) - (sizes_center.height/2) + position.top), left: ((w/2) - (sizes_center.width/2)+ position.left)};
 
+               //console.log(sizes_center);
+					elem.css({
+						"-webkit-transition": "all 100ms"
+					});
 				// on click
 				elem.on(this.options.events.down, function(e){
 					var
@@ -55,16 +61,30 @@
 						event_pos_reverse = {left:(w-e.offsetX), top:(h-e.offsetY)},
 						hub = {x: w/2, y: h/2},
 						axis = {
-							x: (event_pos.left <= tolerances.left) ? 'left' : ((event_pos.left >= (tolerances.left + sizes_center.width)) ? 'right' : 'center'),
-							y: (event_pos.top <= tolerances.top) ? 'top' : ((event_pos.top >=  (tolerances.top + sizes_center.height)) ? 'bottom' : 'center')
-						}
+							x: (event_pos.left + position.left <= tolerances.left) ? 'left' : ((event_pos.left + position.left >= (tolerances.left + sizes_center.width)) ? 'right' : 'center'),
+							y: (event_pos.top + position.top <= tolerances.top) ? 'top' : ((event_pos.top + position.top >=  (tolerances.top + sizes_center.height)) ? 'bottom' : 'center')
+						},
+						//sinal = (),
+						wrapper = elem.wrap('<div class="'+defaults.className+ ' '+ axis.x+'-'+axis.y+'" >');
+                  console.log(event_pos);
+                  console.log(tolerances);
+                  console.log(axis);
+                  console.log('/////////////////////////////')
+						// console.log("-webkit-transform-origin: " + axis.x +' '+ axis.y)
+						// elem.css({
+						// 	"-webkit-transform-origin" : axis.x +' '+ axis.y,
+						// 	"-moz-transform-origin" : axis.x  +' '+ axis.y,
+						// 	"transform-origin" : axis.x  +' '+ axis.y,
+						// 	"-webkit-transform" : "perspective(400px) rotateY(4deg)",
+						// });
 
+
+               //elem.removeAttr('style').wrap('<div class="'+defaults.className+ ' '+ axis.x+'-'+axis.y+'" >');
+
+            });
 					//para vericiar se a area de centro esta correta
-					//elem.append('<div id="center"></div>');
-					//$("#center").html('teste').css({position:'absolute', width:sizes_center.width, height: sizes_center.height, left:tolerances.left, top:tolerances.top, border:'solid 1px red'});
-
-					elem.removeAttr('style').wrap('<div class="'+defaults.className+ ' '+ axis.x+'-'+axis.y+'" >');
-				});
+               elem.append('<div class="center_'+position.left+'"></div>');
+					$('.center_'+position.left).html('teste').css({position:'absolute',background:'rgba(0,0,0,.3)', width:sizes_center.width, height: sizes_center.height, left:tolerances.left, top:tolerances.top, border:'solid 1px red'});
 
 				elem.on(this.options.events.up, function(){
 					elem.unwrap().removeAttr('style').removeClass('right-top right-center right-bottom left-top left-center left-bottom center-center center-top center-bottom');
